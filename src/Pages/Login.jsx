@@ -49,8 +49,7 @@ const Login = () => {
         <h2>Sign In</h2>
         <p>Please Login To Continue</p>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat culpa
-          voluptas expedita itaque ex, totam ad quod error?
+        Welcome back! Please enter your credentials to access your account and continue using CAREFUSION Health Management System. If you have any issues, please contact support.?
         </p>
         <form onSubmit={handleLogin}>
           <input

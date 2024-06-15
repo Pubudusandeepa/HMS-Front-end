@@ -1,7 +1,6 @@
 import axios from "axios";
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 const AppointmentForm = () => {
@@ -18,6 +17,7 @@ const AppointmentForm = () => {
   const [doctorLastName, setDoctorLastName] = useState("");
   const [address, setAddress] = useState("");
   const [hasVisited, setHasVisited] = useState(false);
+  const [disease, setDisease] = useState("");
 
   const departmentsArray = [
     "Pediatrics",
@@ -43,6 +43,7 @@ const AppointmentForm = () => {
     };
     fetchDoctors();
   }, []);
+
   const handleAppointment = async (e) => {
     e.preventDefault();
     try {
@@ -63,6 +64,7 @@ const AppointmentForm = () => {
           doctor_lastName: doctorLastName,
           hasVisited: hasVisitedBool,
           address,
+          disease,
         },
         {
           withCredentials: true,
@@ -70,19 +72,20 @@ const AppointmentForm = () => {
         }
       );
       toast.success(data.message);
-      setFirstName(""),
-        setLastName(""),
-        setEmail(""),
-        setPhone(""),
-        setNic(""),
-        setDob(""),
-        setGender(""),
-        setAppointmentDate(""),
-        setDepartment(""),
-        setDoctorFirstName(""),
-        setDoctorLastName(""),
-        setHasVisited(""),
-        setAddress("");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setNic("");
+      setDob("");
+      setGender("");
+      setAppointmentDate("");
+      setDepartment("");
+      setDoctorFirstName("");
+      setDoctorLastName("");
+      setHasVisited("");
+      setAddress("");
+      setDisease("");
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -178,14 +181,19 @@ const AppointmentForm = () => {
               {doctors
                 .filter((doctor) => doctor.doctorDepartment === department)
                 .map((doctor, index) => (
-                  <option
-                    value={`${doctor.firstName} ${doctor.lastName}`}
-                    key={index}
-                  >
+                  <option value={`${doctor.firstName} ${doctor.lastName}`} key={index}>
                     {doctor.firstName} {doctor.lastName}
                   </option>
                 ))}
             </select>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Disease"
+              value={disease}
+              onChange={(e) => setDisease(e.target.value)}
+            />
           </div>
           <textarea
             rows="10"
