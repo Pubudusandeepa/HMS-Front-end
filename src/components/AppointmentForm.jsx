@@ -2,7 +2,7 @@ import axios from "axios";
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-
+//npm run prebuild
 const AppointmentForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -35,7 +35,7 @@ const AppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       const { data } = await axios.get(
-        "https://mhs-server-7.onrender.com/api/v1/user/doctors",
+        "http://localhost:4000/api/v1/user/doctors",
         { withCredentials: true }
       );
       setDoctors(data.doctors);
@@ -49,7 +49,7 @@ const AppointmentForm = () => {
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-        "https://mhs-server-7.onrender.com/api/v1/appointment/post",
+        "http://localhost:4000intment/post",
         {
           firstName,
           lastName,

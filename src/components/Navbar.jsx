@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await axios
-      .get("https://mhs-server-7.onrender.com/api/v1/user/patient/logout", {
+      .get("http://localhost:4000out", {
         withCredentials: true,
       })
       .then((res) => {

@@ -14,7 +14,7 @@ const MessageForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://mhs-server-7.onrender.com/api/v1/message/send",
+        "http://localhost:4000/api/v1/message/send",
         { firstName, lastName, email, phone, message },
         {
           withCredentials: true,
